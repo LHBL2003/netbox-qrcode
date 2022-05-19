@@ -1,3 +1,5 @@
+from packaging import version
+from django.conf import settings
 from django.core.exceptions import ObjectDoesNotExist
 from extras.plugins import PluginTemplateExtension
 
@@ -61,9 +63,14 @@ class QRCode(PluginTemplateExtension):
         else:
             img = get_img_b64(qr_img)
         try:
-            return self.render(
-                'netbox_qrcode/qrcode.html', extra_context={'image': img}
-            )
+            if version.parse(settings.VERSION).major >= 3:
+                return self.render(
+                    'netbox_qrcode/qrcode3.html', extra_context={'image': img}
+                )
+            else:
+                return self.render(
+                    'netbox_qrcode/qrcode.html', extra_context={'image': img}
+                )
         except ObjectDoesNotExist:
             return ''
 
