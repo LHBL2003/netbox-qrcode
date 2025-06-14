@@ -189,7 +189,7 @@ PLUGINS_CONFIG = {
             'label_edge_top': '0mm',
             'label_edge_left': '2mm',
             'label_edge_right': '2mm',
-             'text_location': 'left',
+            'text_location': 'left',
         },
 
         'device_4': {
@@ -305,6 +305,29 @@ PLUGINS_CONFIG = {
             'label_edge_right': '0mm',
         },
 
+        'device_11': {
+            'title': 'Example 11 (Template for Device) - Data Matrix',
+            'barcode_type': 'datamatrix',
+        },
+
+        'device_12': {
+            'title': 'Example 12 (Template for Device) - 1D Barcode (Code-128)',
+            'font_size': '4mm',
+            'label_qr_width': '50mm',
+            'label_qr_height': '20mm',
+            'label_qr_text_distance': '0mm',
+            'label_width': '56mm',
+            'label_height': '32mm',
+            'label_edge_top': '0mm',
+            'label_edge_left': '0mm',
+            'label_edge_right': '0mm',
+            'with_text': True,
+            'with_qr': True,
+            'barcode_type': 'code128',
+            'url_template': '{{ obj.name }}',
+            'text_location': 'down',
+            'text_align_horizontal': 'center',
+        },
 
         ## Example Template for Cables
 

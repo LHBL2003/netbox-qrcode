@@ -42,7 +42,7 @@ class QRCodeConfig(PluginConfig):
         ################################## 
         # Barcode
         'with_qr': True,
-        'barcode_type': 'datamatrix',
+        'barcode_type': 'qrcode',
         
         # Barcode alternative source
         'url_template': None,

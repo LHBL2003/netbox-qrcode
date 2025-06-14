@@ -96,7 +96,7 @@ class QRCode(PluginTemplateExtension):
 
         config = self.context['config'] # Django configuration
 
-        for i in range(2, 11):
+        for i in range(2, 50):
 
             configName = self.models[0].replace('dcim.', '') + '_' + str(i)
             obj_cfg = config.get(configName) # Load configuration for additional label if possible.
