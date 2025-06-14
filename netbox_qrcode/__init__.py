@@ -40,10 +40,11 @@ class QRCodeConfig(PluginConfig):
         'font_color': 'black',
         
         ################################## 
-        # QR-Code
+        # Barcode
         'with_qr': True,
+        'barcode_type': 'datamatrix',
         
-        # QR-Code alternative source
+        # Barcode alternative source
         'url_template': None,
         
         # QR-Code Image File

@@ -1,4 +1,4 @@
-from .utilities import get_img_b64, get_qr
+from .utilities import get_img_b64, get_qr, get_1D_Barcode, get_datamatrix
 from django.template import engines
 
 # ******************************************************************************************
@@ -40,16 +40,26 @@ def config_for_modul(parentSelf, labelDesignNo):
 #   config: From the Netbox configuration file
 def create_QRCode(text, config):
 
-    # Collect the configuration entries that begin with "qr_.
-    # These are required to generate the QR code.
-    qr_args = {}
-    for k, v in config.items():
-        if k.startswith('qr_'):
-            qr_args[k.replace('qr_', '')] = v
+    barcodeType = config.get('barcode_type')
 
-    # Create a QR code
-    qrCode = get_qr(text, **qr_args)
-    return get_img_b64(qrCode)
+    # Create a Barcode
+    if barcodeType == 'qrcode':
+        # Collect the configuration entries that begin with "qr_.
+        # These are required to generate the QR code.
+        qr_args = {}
+        for k, v in config.items():
+            if k.startswith('qr_'):
+                qr_args[k.replace('qr_', '')] = v
+
+        barCode = get_qr(text, **qr_args)
+
+    elif barcodeType == 'datamatrix':
+        barCode = get_datamatrix(text)
+
+    else:
+        barCode = get_1D_Barcode(text)
+
+    return get_img_b64(barCode)
 
 
 ##################################

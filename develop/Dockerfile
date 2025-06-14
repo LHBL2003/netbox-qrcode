@@ -6,9 +6,21 @@ ENV PYTHONUNBUFFERED 1
 
 RUN mkdir -p /opt
 
+RUN cat /etc/os-release
+
+# For Data Matrix
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        libdmtx-dev \
+        $(apt-cache show libdmtx0b >/dev/null 2>&1 && echo libdmtx0b || echo libdmtx0a) \
+        git \
+        gcc \
+        libc-dev \
+        build-essential && \
+    rm -rf /var/lib/apt/lists/*
+
 RUN pip install --upgrade pip
 RUN pip install setuptools
-
 
 # -------------------------------------------------------------------------------------
 # Install NetBox

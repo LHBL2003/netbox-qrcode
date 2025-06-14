@@ -40,7 +40,9 @@ setup(
     },
     install_requires=[
         'qrcode',
-        'Pillow'
+        'Pillow', 
+        'python-barcode',
+        'pylibdmtx',
     ],
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
